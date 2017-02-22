@@ -7,5 +7,8 @@ use Sentinel;
 
 class AdminController extends Controller
 {
-
+    public function ernings()
+    {
+        return view('admins.ernings');
+    }
 }

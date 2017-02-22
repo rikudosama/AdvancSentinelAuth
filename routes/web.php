@@ -14,10 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::group(['middleware' => 'vistors'], function(){
+  Route::get('/register', 'RegistrationController@register');
+  Route::post('/register', 'RegistrationController@postRegister');
+  Route::get('/login', 'LoginController@login');
+  Route::post('/login', 'LoginController@postlogin');
+});
 
-Route::get('/register', 'RegistrationController@register');
-Route::post('/register', 'RegistrationController@postRegister');
-Route::get('/login', 'LoginController@login');
-Route::post('/login', 'LoginController@postlogin');
 Route::post('/logout', 'LoginController@logout');
-Route::get('/ernings', 'AdminController@ernings');
+Route::get('/ernings', 'AdminController@ernings')->middleware('admin');
+Route::get('/tasks', 'ManagerController@tasks')->middleware('manager');
