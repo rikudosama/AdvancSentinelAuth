@@ -19,6 +19,10 @@ Route::group(['middleware' => 'vistors'], function(){
   Route::post('/register', 'RegistrationController@postRegister');
   Route::get('/login', 'LoginController@login');
   Route::post('/login', 'LoginController@postlogin');
+  Route::get('/forgot-password', 'forgotPasswordController@forgotPassword');
+  Route::post('/forgot-password', 'forgotPasswordController@postForgotPassword');
+  Route::get('/reset/{email}/{resetCode}', 'forgotPasswordController@resetPassword');
+  Route::post('/reset/{email}/{resetCode}', 'forgotPasswordController@postResetPassword');
 });
 
 Route::post('/logout', 'LoginController@logout');

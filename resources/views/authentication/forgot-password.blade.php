@@ -5,18 +5,13 @@
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Login</h3>
+                    <h3 class="panel-title">Forgot password</h3>
                 </div>
                 <div class="panel-body">
-                    <form action="/login" method="POST">
+                    <form action="/forgot-password" method="POST">
                         {{csrf_field()}}
 
-                        @if(session('error'))
-                        <div class="alert alert-danger">
-                            {{ session('error') }}
-                        </div>
-                        @endif
-                         @if(session('success'))
+                        @if(session('success'))
                         <div class="alert alert-success">
                             {{ session('success') }}
                         </div>
@@ -28,14 +23,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                <input type="password" name="password" class="form-control" placeholder="Your password" required>
-                            </div>
-                        </div>
-                        <a href="/forgot-password">forgot your password ?</a>
-                        <div class="form-group">
-                            <input type="submit" value="login" class="btn btn-success btn-block">
+                            <input type="submit" value="send code" class="btn btn-success btn-block">
                         </div>
                     </form>
                 </div>
