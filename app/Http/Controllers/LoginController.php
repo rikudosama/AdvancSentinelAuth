@@ -17,7 +17,12 @@ class LoginController extends Controller
     public function postlogin(Request $request)
     {
         try {
-            if (Sentinel::authenticate($request->all())) {
+            $rememberMe = false;
+
+            if(isset($request->remember_me))
+                $rememberMe = true;
+
+            if (Sentinel::authenticate($request->all(), $rememberMe)) {
                 $slug = Sentinel::getUser()->roles()->first()->slug;
                 if($slug =='admin')
                     return redirect('/ernings');
